@@ -17,7 +17,7 @@ let firstCatLoad = [
   console.log(firstCatLoad)
 export function CardBoard() {
    return (
-    <div id="cardBoard" className='grid grid-cols-5 grid-rows-2 gap-4 p-4 bg-green-400'>
+    <div id="cardBoard" className='grid grid-cols-5 grid-rows-2 gap-32 p-16 bg-green-400'>
         {firstCatLoad.map(cat => (
         <Card key={cat.id} catItem={cat} />
       ))}
