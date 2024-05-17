@@ -16,20 +16,37 @@ let firstCatLoad = [
   ];
 
 export function CardBoard() {
+    const [cats, setCats] = useState(firstCatLoad)
     const [clickedCards, setClickedCards] = useState([])
+
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          let j = Math.floor(Math.random() * (i + 1));
+          let temp = array[i];
+          array[i] = array[j];
+          array[j] = temp;
+        }
+        return array;
+      }
+
+    const shuffleCards = () => {
+        // Shuffle the cards array
+        const shuffledCats = shuffleArray(cats)
+        setCats(shuffledCats)
+      };
 
     const handleCardClick = (catId) => {
     if (!clickedCards.includes(catId)) {
         // Add the clicked card's ID to the list of clicked cards
-        setClickedCards([...clickedCards, catId]);
-        console.log(clickedCards)
+        setClickedCards([...clickedCards, catId])
+        shuffleCards()
     }
     }
 
 
    return (
     <div id="cardBoard" className='grid grid-cols-5 grid-rows-2 gap-32 p-16 bg-green-200'>
-        {firstCatLoad.map(cat => (
+        {cats.map(cat => (
         <Card key={cat.id} catItem={cat} onCardClick={handleCardClick} />
       ))}
     </div>
