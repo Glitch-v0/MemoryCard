@@ -1,4 +1,5 @@
 import {Card} from './Card.jsx'
+import { useState } from 'react';
 
 // Sample data
 let firstCatLoad = [
@@ -14,13 +15,23 @@ let firstCatLoad = [
     { id: "O4yjcTJOh", url: "https://cdn2.thecatapi.com/images/O4yjcTJOh.jpg", width: 1080, height: 1350 }
   ];
 
-  console.log(firstCatLoad)
 export function CardBoard() {
+    const [clickedCards, setClickedCards] = useState([])
+
+    const handleCardClick = (catId) => {
+    if (!clickedCards.includes(catId)) {
+        // Add the clicked card's ID to the list of clicked cards
+        setClickedCards([...clickedCards, catId]);
+        console.log(clickedCards)
+    }
+    }
+
+
    return (
-    <div id="cardBoard" className='grid grid-cols-5 grid-rows-2 gap-32 p-16 bg-green-400'>
+    <div id="cardBoard" className='grid grid-cols-5 grid-rows-2 gap-32 p-16 bg-green-200'>
         {firstCatLoad.map(cat => (
-        <Card key={cat.id} catItem={cat} />
+        <Card key={cat.id} catItem={cat} onCardClick={handleCardClick} />
       ))}
     </div>
-   );
+   )
 }
