@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export function Card( catItem ) {
+export function Card( {catItem} ) {
   const [currentCat, changeCat] = useState(catItem)
   return (
     <div className="max-w-sm bg-white border border-gray-400 rounded-lg shadow p-5">
