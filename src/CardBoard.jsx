@@ -19,6 +19,7 @@ export function CardBoard() {
     const [cats, setCats] = useState(firstCatLoad)
     const [clickedCards, setClickedCards] = useState([])
 
+    // Fisher-Yates Shuffle Algorithm
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
           let j = Math.floor(Math.random() * (i + 1));
@@ -45,7 +46,10 @@ export function CardBoard() {
 
 
    return (
-    <div id="cardBoard" className='grid grid-cols-5 grid-rows-2 gap-32 p-16 bg-green-200'>
+    <div id="cardBoard"
+    className='grid place-items-center
+    gap-4 sm:gap-6 md:gap-8 lg:gap-10 grid-cols-2 grid-rows-5 sm:grid-cols-4 sm:grid-rows-3 lg:grid-cols-5 lg:grid-rows-2 
+    bg-green-200'>
         {cats.map(cat => (
         <Card key={cat.id} catItem={cat} onCardClick={handleCardClick} />
       ))}
