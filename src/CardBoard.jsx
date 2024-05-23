@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {Card} from './Card.jsx'
 import { useState } from 'react';
 
@@ -15,7 +16,7 @@ let firstCatLoad = [
     { id: "O4yjcTJOh", url: "https://cdn2.thecatapi.com/images/O4yjcTJOh.jpg", width: 1080, height: 1350 }
   ];
 
-export function CardBoard() {
+export function CardBoard({increaseScore, decreaseScore}) {
     const [cats, setCats] = useState(firstCatLoad)
     const [clickedCards, setClickedCards] = useState([])
 
@@ -40,7 +41,10 @@ export function CardBoard() {
     if (!clickedCards.includes(catId)) {
         // Add the clicked card's ID to the list of clicked cards
         setClickedCards([...clickedCards, catId])
+        increaseScore()
         shuffleCards()
+    } else {
+      decreaseScore()
     }
     }
 
