@@ -10,7 +10,7 @@ export default function Card({ catItem, onCardClick }) {
 
   return (
     <div
-      className="bg-white border border-gray-400 rounded-lg p-2 w-20 h-20 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-32 lg:h-32  flex justify-center items-center transition duration-500 ease-in-out hover:bg-green-500"
+      className="bg-white border border-gray-400 rounded-lg p-2 w-24 h-24 md:w-24 md:h-24 lg:w-32 lg:h-32  flex justify-center items-center transition duration-500 ease-in-out hover:bg-green-500"
       onClick={handleClick}
     >
       <img

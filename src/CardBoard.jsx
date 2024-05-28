@@ -42,16 +42,13 @@ export default function CardBoard({ increaseScore, decreaseScore, nextRound }) {
       setNextCats(newCatData);
     }
     if (!clickedCards.includes(catId)) {
+      increaseScore();
       setClickedCards((prevClickedCards) => {
         const updatedClickedCards = [...prevClickedCards, catId];
-        increaseScore();
-
         if (updatedClickedCards.length === cats.length) {
-          console.log('Congratulations! Moving on to the next round.');
           nextRound();
           setCats(nextCats);
           setClickedCards([]);
-          console.log('Clicked cards should be reset.');
           setNextCats([]);
         } else {
           shuffleCards();
@@ -68,7 +65,7 @@ export default function CardBoard({ increaseScore, decreaseScore, nextRound }) {
     <div
       id="cardBoard"
       className="grid place-items-center
-    gap-4 sm:gap-6 md:gap-8 lg:gap-10 grid-cols-2 grid-rows-5 sm:grid-cols-4 sm:grid-rows-3 lg:grid-cols-5 lg:grid-rows-2
+    gap-4 sm:gap-6 lg:gap-10 grid-cols-2 grid-rows-5 sm:grid-cols-4 sm:grid-rows-3 lg:grid-cols-5 lg:grid-rows-2
     bg-green-200"
     >
       {cats.map((cat) => (
