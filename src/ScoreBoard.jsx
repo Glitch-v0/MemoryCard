@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function ScoreBoard({ round, score }) {
   return (
-    <div className="grid place-content-center">
+    <div className="flex place-content-center justify-around">
       <h1>
         Current Round:
         {round}

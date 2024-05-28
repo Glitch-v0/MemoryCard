@@ -1,5 +1,5 @@
 export default function GetCatData() {
-  return fetch('https://api.thecatapi.com/v1/images/search?limit=10')
+  return fetch('https://api.thecatapi.com/v1/images/search?limit=5')
     .then((response) => {
       // Check if the response status is OK (status code 200-299)
       if (!response.ok) {
