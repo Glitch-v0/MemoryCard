@@ -3,11 +3,18 @@
 import React, { useEffect, useState } from 'react';
 import Card from './Card';
 import GetCatData from './CatAPI';
+import clickSound from './sounds/click-sound.wav';
+import failureSound from './sounds/failure.wav';
+import roundCompleteSound from './sounds/positive-sound.wav';
+
 
 export default function CardBoard({ increaseScore, decreaseScore, nextRound }) {
   const [cats, setCats] = useState([]);
   const [nextCats, setNextCats] = useState([]);
   const [clickedCards, setClickedCards] = useState([]);
+  const goodClickSound = new Audio(clickSound);
+  const badClickSound = new Audio(failureSound);
+  const roundComplete = new Audio(roundCompleteSound);
 
   useEffect(() => {
     // Fetch cat data when the component mounts
@@ -42,10 +49,12 @@ export default function CardBoard({ increaseScore, decreaseScore, nextRound }) {
       setNextCats(newCatData);
     }
     if (!clickedCards.includes(catId)) {
+      goodClickSound.play();
       increaseScore();
       setClickedCards((prevClickedCards) => {
         const updatedClickedCards = [...prevClickedCards, catId];
         if (updatedClickedCards.length === cats.length) {
+          roundComplete.play();
           nextRound();
           setCats(nextCats);
           setClickedCards([]);
@@ -57,6 +66,7 @@ export default function CardBoard({ increaseScore, decreaseScore, nextRound }) {
         return updatedClickedCards;
       });
     } else {
+      badClickSound.play();
       decreaseScore();
     }
   };
