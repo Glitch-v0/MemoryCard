@@ -5,8 +5,8 @@ import GreetingMessage from './GreetingMessage';
 import '../index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React>
+  <React.StrictMode>
     <GreetingMessage />
     <GameBoard />
-  </React>,
+  </React.StrictMode>,
 );
